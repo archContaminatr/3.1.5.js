@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Setter
@@ -31,4 +32,8 @@ public class Role implements GrantedAuthority {
         return getRole();
     }
 
+    @Override
+    public String toString() {
+        return getRole();
+    }
 }

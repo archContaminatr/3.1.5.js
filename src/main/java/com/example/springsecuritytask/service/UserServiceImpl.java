@@ -29,19 +29,16 @@ public class UserServiceImpl implements UserService {
         newUser.setLastName(user.getLastName());
         newUser.setEmail(user.getEmail());
         newUser.setPassword(passwordEncoder.encode(user.getPassword()));
+        newUser.setRoles(user.getRoles());
 
-        Role role = roleRepository.findByRole("ROLE_ADMIN");
-        if (role == null) {
-            role = checkRoleExist();
-        }
-        newUser.setRoles(List.of(role));
         userRepository.save(newUser);
     }
 
-    private Role checkRoleExist() {
-        Role role = new Role();
-        role.setRole("ROLE_ADMIN");
-        return roleRepository.save(role);
+    @Override
+    public void deleteById(Long id) {
+        User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+        user.getRoles().clear();
+        userRepository.delete(user);
     }
 
     @Override
@@ -52,6 +49,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findAllUsers() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public User getUserById(Long id) {
+        return userRepository.getReferenceById(id);
     }
 
 }
