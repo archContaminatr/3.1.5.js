@@ -10,23 +10,23 @@
   <input type="hidden" name="_method" value="patch">
   <input type="hidden" th:field="*{id}">
 
-  <label for="email">E-mail</label>
+  <label for="email">e-mail</label>
   <input type="text" th:field="*{email}" id="email"/>
   <br>
 
-  <label for="password">Пароль</label>
+  <label for="password">пароль</label>
   <input type="password" th:field="*{password}" id="password"/>
   <br>
 
-  <label for="firstName">Имя</label>
+  <label for="firstName">имя</label>
   <input type="text" th:field="*{firstName}" id="firstName"/>
   <br>
 
-  <label for="lastName">Фамилия</label>
+  <label for="lastName">фамилия</label>
   <input type="text" th:field="*{lastName}" id="lastName"/>
   <br>
 
-  <label>Roles:
+  <label>роли:
     <input type="checkbox" name="Роли:"
            th:each="role : ${roles}"
            th:text="${role.role}"
