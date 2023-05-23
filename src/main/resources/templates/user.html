@@ -14,22 +14,23 @@
     <title>User Page</title>
 </head>
 <body>
-
-<nav class="navbar navbar-dark fixed-top bg-dark">
-    <div class="container-fluid">
-        <div>
-            <span class="navbar-brand mb-0 h1" th:text="${user.email}">Admin</span>
-            <span class="navbar-brand">with roles:</span>
-            <span class="navbar-brand" th:each="role : ${user.roles}"
-                  th:text="${#strings.substring(role.getRole(), 5, #strings.length(role.getRole()()))}"
-            >Roles</span>
+<header>
+    <nav class="navbar navbar-expand-md py-0 navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+            <div class="navbar-brand">
+                <span th:utext="'&lt;strong&gt;' + ${user.email} + '&lt;/strong&gt; with roles '"></span>
+                <span class="navbar-brand" th:each="role : ${user.roles}"
+                      th:text="${role.getRole().replaceAll('ROLE_', '')}"
+                >Roles</span>
+            </div>
+            <ul class="nav">
+                <li class="nav-item ml-md-auto">
+                    <a class="nav-link link-secondary active" href="/logout">Logout</a>
+                </li>
+            </ul>
         </div>
-
-        <div>
-            <a class="btn btn-secondary btn-md" href="/logout">Logout</a>
-        </div>
-    </div>
-</nav>
+    </nav>
+</header>
 
 <div class="container-fluid">
     <div class="row">
