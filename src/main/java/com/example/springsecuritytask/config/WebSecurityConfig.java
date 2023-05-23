@@ -42,8 +42,11 @@ public class WebSecurityConfig {
                                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 ).formLogin(
                         form -> form
-                                .successHandler(successUserHandler)
+                                .loginPage("/login")
                                 .permitAll()
+                                .successHandler(successUserHandler)
+                                .usernameParameter("email")
+                                .passwordParameter("password")
                 ).logout(
                         logout -> logout
                                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
