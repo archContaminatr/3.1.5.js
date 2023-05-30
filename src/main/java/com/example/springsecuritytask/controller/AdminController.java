@@ -17,16 +17,9 @@ public class AdminController {
 
     private UserService userService;
 
-    private RoleRepository roleRepository;
-
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
-    }
-
-    @Autowired
-    public void setRoleRepository(RoleRepository roleRepository) {
-        this.roleRepository = roleRepository;
     }
 
     @GetMapping()
