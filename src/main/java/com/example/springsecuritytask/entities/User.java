@@ -1,6 +1,7 @@
 package com.example.springsecuritytask.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -38,10 +39,9 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String lastName;
 
-    @JsonBackReference
+    @JsonManagedReference
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "users_roles",
+    @JoinTable(name = "users_roles",
             joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(name = "ROLES_ID", referencedColumnName = "ID")})
     private Set<Role> roles = new HashSet<>();

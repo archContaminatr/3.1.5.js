@@ -1,5 +1,6 @@
 package com.example.springsecuritytask.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,7 +26,7 @@ public class Role implements GrantedAuthority {
     @Column(nullable = false, unique = true)
     private String role;
 
-    @JsonManagedReference
+    @JsonBackReference
     @ManyToMany(mappedBy = "roles")
     private Set<User> users;
 
