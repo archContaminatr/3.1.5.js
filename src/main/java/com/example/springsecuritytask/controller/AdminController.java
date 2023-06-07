@@ -23,7 +23,7 @@ public class AdminController {
     }
 
     @GetMapping()
-    public String modelMainPage(Model model, Principal principal) {
+    public String showAdminPage(Model model, Principal principal) {
         model.addAttribute("usersList", userService.findAllUsers());
         model.addAttribute("roles", userService.findAllRoles());
         model.addAttribute("user", userService.findUserByEmail(principal.getName()));

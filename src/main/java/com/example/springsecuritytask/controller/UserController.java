@@ -20,16 +20,10 @@ public class UserController {
     }
 
     @GetMapping("/user")
-    public String modelMainPage(Model model, Principal principal) {
+    public String showUserPage(Model model, Principal principal) {
         User user = userService.findUserByEmail(principal.getName());
         model.addAttribute("user", user);
         return "user";
     }
 
-    @GetMapping("/test")
-    public String mailPage(Model model, Principal principal) {
-        User user = userService.findUserByEmail(principal.getName());
-        model.addAttribute("user", user);
-        return "admin";
-    }
 }
