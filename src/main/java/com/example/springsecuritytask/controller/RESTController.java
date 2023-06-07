@@ -41,7 +41,7 @@ public class RESTController {
         return new ResponseEntity<>(createdUser, HttpStatus.OK);
     }
 
-    @PutMapping("/users/{id}")
+    @PutMapping("/users")
     public ResponseEntity<User> updateUser(@RequestBody User updatedUser) {
         userService.saveUser(updatedUser);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);

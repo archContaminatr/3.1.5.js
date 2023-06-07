@@ -82,7 +82,6 @@ function createUser() {
         .then(response => response.json())
         .then(user => fillingUserToUsersTable(user))
         .then(() => $("#create-user-form").trigger("reset"))
-        .catch(error => console.log(error))
 }
 
 function readUserByIdForUpdate(id) {
